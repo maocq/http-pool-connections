@@ -1,0 +1,10 @@
+{
+    "url_reposity": "https://github.com/maocq/http-pool-connections",
+    "user": "ubuntu",
+    "key": "/home/mao/mao/keys/johncarm-test.pem",
+    "key_name": "johncarm-test",
+    "instance_type": "c5.large",
+    "security_group": "sg-0ac695d03feaf6204",
+    "image_id": "ami-052efd3df9dad4825",
+    "http_pool_size": 2000
+}
