@@ -51,7 +51,8 @@ defmodule ElixirMs.Application do
       {ConfigHolder, AppConfig.load_config()},
       {SecretManagerAdapter, []},
       {ElixirMs.Repo, []},
-      {Finch, name: HttpFinch, pools: %{:default => [size: String.to_integer(size)]}}
+      #{Finch, name: HttpFinch, pools: %{:default => [size: String.to_integer(size)]}}
+      {Finch, name: HttpFinch, pools: %{:default => [protocol: :http2]}}
     ]
   end
 end

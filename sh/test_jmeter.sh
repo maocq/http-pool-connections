@@ -35,8 +35,10 @@ duration_seconds=$(jq -r ".duration_seconds" "$config_jmeter_file")
 ramp_up_period_seconds=$(jq -r ".ramp_up_period_seconds" "$config_jmeter_file")
 latency=$(jq -r ".latency" "$config_jmeter_file")
 hello_number_users=$(jq -r ".hello_number_users" "$config_jmeter_file")
-get_hello_number_users=$(jq -r ".get_hello_number_users" "$config_jmeter_file")
-get_hello_pool_number_users=$(jq -r ".get_hello_pool_number_users" "$config_jmeter_file")
+get_http_number_users=$(jq -r ".get_http_number_users" "$config_jmeter_file")
+get_https_number_users=$(jq -r ".get_https_number_users" "$config_jmeter_file")
+get_pool_http1_number_users=$(jq -r ".get_pool_http1_number_users" "$config_jmeter_file")
+get_pool_http2_number_users=$(jq -r ".get_pool_http2_number_users" "$config_jmeter_file")
 query_number_users=$(jq -r ".query_number_users" "$config_jmeter_file")
 
 sed -i -e "s/_SERVICE_IP_/$ip/g" \
@@ -44,8 +46,10 @@ sed -i -e "s/_SERVICE_IP_/$ip/g" \
     -e "s/_RAMP_UP_PERIOD_SECONDS_/$ramp_up_period_seconds/g" \
     -e "s/_LATENCY_/$latency/g" \
     -e "s/_HELLO_NUMBER_USERS_/$hello_number_users/g" \
-    -e "s/_GET_HELLO_NUM_USERS_/$get_hello_number_users/g" \
-    -e "s/_GET_HELLO_POOL_NUM_USERS_/$get_hello_pool_number_users/g" \
+    -e "s/_GET_HTTP_NUMBER_USERS_/$get_http_number_users/g" \
+    -e "s/_GET_HTTPS_NUMBER_USERS_/$get_https_number_users/g" \
+    -e "s/_GET_POOL_HTTP1_NUMBER_USERS_/$get_pool_http1_number_users/g" \
+    -e "s/_GET_POOL_HTTP2_NUMBER_USERS_/$get_pool_http2_number_users/g" \
     -e "s/_QUERY_NUMBER_USERS_/$query_number_users/g" \
     ".tmp/work/JMeterBenchmark-$case.jmx"
 

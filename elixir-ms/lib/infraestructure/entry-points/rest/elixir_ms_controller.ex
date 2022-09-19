@@ -23,10 +23,10 @@ defmodule ElixirMs.EntryPoint.Rest.ElixirMsController do
     |> build_response(conn)
   end
 
-  get "/api/get-hello" do
+  get "/api/http" do
     latency = conn.query_params["latency"] || 0
 
-    case GetHelloUseCase.hello(latency) do
+    case GetHelloUseCase.hello_http(latency) do
       {:ok, response} -> response |> build_response(conn)
       {:error, error} ->
         Logger.error("Error get hello #{inspect(error)}")
@@ -34,10 +34,32 @@ defmodule ElixirMs.EntryPoint.Rest.ElixirMsController do
     end
   end
 
-  get "/api/get-hello-pool" do
+  get "/api/https" do
     latency = conn.query_params["latency"] || 0
 
-    case GetHelloUseCase.hello_connection_pool(latency) do
+    case GetHelloUseCase.hello_https(latency) do
+      {:ok, response} -> response |> build_response(conn)
+      {:error, error} ->
+        Logger.error("Error get hello #{inspect(error)}")
+        build_response(%{status: 500, body: "Error"}, conn)
+    end
+  end
+
+  get "/api/pool-http1" do
+    latency = conn.query_params["latency"] || 0
+
+    case GetHelloUseCase.hello_connection_pool_http1(latency) do
+      {:ok, response} -> response |> build_response(conn)
+      {:error, error} ->
+        Logger.error("Error get hello #{inspect(error)}")
+        build_response(%{status: 500, body: "Error"}, conn)
+    end
+  end
+
+  get "/api/pool-http2" do
+    latency = conn.query_params["latency"] || 0
+
+    case GetHelloUseCase.hello_connection_pool_http2(latency) do
       {:ok, response} -> response |> build_response(conn)
       {:error, error} ->
         Logger.error("Error get hello #{inspect(error)}")

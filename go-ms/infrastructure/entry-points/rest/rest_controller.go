@@ -11,20 +11,40 @@ func Start(hello *usecase.HelloUseCase, dbUseCase *usecase.DBUseCase) {
 	router := gin.Default()
 	router.GET("/api/hello", func(c *gin.Context) { c.String(http.StatusOK, "Hello") })
 
-	router.GET("/api/get-hello", func(c *gin.Context) {
+	router.GET("/api/http", func(c *gin.Context) {
 		latency := c.DefaultQuery("latency", "0")
 
-		if body, err := hello.Hello(latency); err != nil {
+		if body, err := hello.HelloHttp(latency); err != nil {
 			c.String(http.StatusInternalServerError, err.Error())
 		} else {
 			c.String(http.StatusOK, body)
 		}
 	})
 
-	router.GET("/api/get-hello-pool", func(c *gin.Context) {
+	router.GET("/api/https", func(c *gin.Context) {
 		latency := c.DefaultQuery("latency", "0")
 
-		if body, err := hello.HelloConnectionPool(latency); err != nil {
+		if body, err := hello.HelloHttps(latency); err != nil {
+			c.String(http.StatusInternalServerError, err.Error())
+		} else {
+			c.String(http.StatusOK, body)
+		}
+	})
+
+	router.GET("/api/pool-http1", func(c *gin.Context) {
+		latency := c.DefaultQuery("latency", "0")
+
+		if body, err := hello.HelloConnectionPoolHttp1(latency); err != nil {
+			c.String(http.StatusInternalServerError, err.Error())
+		} else {
+			c.String(http.StatusOK, body)
+		}
+	})
+
+	router.GET("/api/pool-http2", func(c *gin.Context) {
+		latency := c.DefaultQuery("latency", "0")
+
+		if body, err := hello.HelloConnectionPoolHttp2(latency); err != nil {
 			c.String(http.StatusInternalServerError, err.Error())
 		} else {
 			c.String(http.StatusOK, body)

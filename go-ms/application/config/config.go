@@ -12,7 +12,7 @@ import (
 )
 
 func InitDB() *gorm.DB {
-	ip := GetEnvOrDefault("DATABASE_IP", "db")
+	ip := GetEnvOrDefault("DATABASE_IP", "localhost")
 	url := fmt.Sprintf("postgres://compose-postgres:compose-postgres@%s:5432/compose-postgres", ip)
 	db, err := gorm.Open(postgres.Open(url), &gorm.Config{})
 	if err != nil {
@@ -49,7 +49,7 @@ func GetHttpClientPool() *http.Client {
 }
 
 func GetUrlService() string {
-	return fmt.Sprintf("http://%s:8080", GetEnvOrDefault("EXTERNAL_SERVICE_IP", "node-latency"))
+	return "n2.apidevopsteam.xyz"
 }
 
 func GetEnvOrDefault(key string, defaultV string) string {

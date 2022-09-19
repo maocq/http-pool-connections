@@ -30,7 +30,7 @@ config :elixir_ms, ElixirMs.Repo,
 config :elixir_ms, ecto_repos: [ElixirMs.Repo]
 
 config :elixir_ms,
-  external_service_ip: System.get_env("EXTERNAL_SERVICE_IP") || "localhost",
+  external_service_ip: "n1.apidevopsteam.xyz",
   http_pool_size: System.get_env("HTTP_POOL_SIZE") || "100"
 
 config :elixir_ms,

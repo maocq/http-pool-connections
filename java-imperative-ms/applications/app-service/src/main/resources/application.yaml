@@ -2,7 +2,7 @@ server:
   port: 8080
   tomcat:
     threads:
-      max: 2000
+      max: ${HTTP_POOL_SIZE:100}
 spring:
   application:
     name: "JavaImperativeMS"

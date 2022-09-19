@@ -22,7 +22,7 @@ config :elixir_ms, ElixirMs.Repo,
   database: "compose-postgres",
   username: "compose-postgres",
   password: "compose-postgres",
-  hostname: System.get_env("DATABASE_IP") || "db",
+  hostname: System.get_env("DATABASE_IP") || "localhost",
   pool_size: 10,
   queue_target: 5000,
   timeout: :timer.minutes(1)
@@ -30,7 +30,7 @@ config :elixir_ms, ElixirMs.Repo,
 config :elixir_ms, ecto_repos: [ElixirMs.Repo]
 
 config :elixir_ms,
-  external_service_ip: System.get_env("EXTERNAL_SERVICE_IP") || "node-latency",
+  external_service_ip: "n1.apidevopsteam.xyz",
   http_pool_size: System.get_env("HTTP_POOL_SIZE") || "100"
 
 config :elixir_ms,
