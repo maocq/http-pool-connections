@@ -9,11 +9,19 @@ public class GetHelloUseCase {
 
     private final HelloRepository helloRepository;
 
-    public Mono<String> hello(int latency) {
-        return helloRepository.hello(latency);
+    public Mono<String> helloHttp(int latency) {
+        return helloRepository.helloHttp(latency);
     }
 
-    public Mono<String> helloConnectionPool(int latency) {
-        return helloRepository.helloConnectionPool(latency);
+    public Mono<String> helloHttps(int latency) {
+        return helloRepository.helloHttps(latency);
+    }
+
+    public Mono<String> helloConnectionPoolHttp1(int latency) {
+        return helloRepository.helloConnectionPoolHttp1(latency);
+    }
+
+    public Mono<String> helloConnectionPoolHttp2(int latency) {
+        return helloRepository.helloConnectionPoolHttp2(latency);
     }
 }

@@ -20,6 +20,6 @@ database:
   port: 5432
 adapter:
   restconsumer:
-    timeout: 5000
-    url: "http://${EXTERNAL_SERVICE_IP:node-latency}:8080"
+    timeout: 45000
+    url: "n3.apidevopsteam.xyz"
     pool: "${HTTP_POOL_SIZE:100}"

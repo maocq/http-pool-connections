@@ -15,14 +15,13 @@ type HelloHttpRepository struct {
 func (h *HelloHttpRepository) HelloHttp(latency string) (string, error) {
 	urlComplete := fmt.Sprintf("%s://%s/%s", "http", h.Url, latency)
 
-	return request(latency, urlComplete, h.Client)
+	return request(latency, urlComplete, &http.Client{})
 }
 
 func (h *HelloHttpRepository) HelloHttps(latency string) (string, error) {
-	//Crear nuevo cliente
 	urlComplete := fmt.Sprintf("%s://%s/%s", "https", h.Url, latency)
 
-	return request(latency, urlComplete, h.Client)
+	return request(latency, urlComplete, &http.Client{})
 }
 
 func (h *HelloHttpRepository) HelloConnectionPoolHttp1(latency string) (string, error) {

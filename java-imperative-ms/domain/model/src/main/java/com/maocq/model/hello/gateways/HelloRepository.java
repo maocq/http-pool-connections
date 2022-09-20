@@ -2,6 +2,9 @@ package com.maocq.model.hello.gateways;
 
 public interface HelloRepository {
 
-    String hello(int latency);
-    String helloConnectionPool(int latency);
+    String http(int latency);
+    String https(int latency);
+    String helloConnectionPoolHttp1(int latency);
+    String helloConnectionPoolHttp2(int latency);
+
 }

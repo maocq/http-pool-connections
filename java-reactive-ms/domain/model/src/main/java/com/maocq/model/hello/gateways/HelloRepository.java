@@ -4,6 +4,8 @@ import reactor.core.publisher.Mono;
 
 public interface HelloRepository {
 
-    Mono<String> hello(int latency);
-    Mono<String> helloConnectionPool(int latency);
+    Mono<String> helloHttp(int latency);
+    Mono<String> helloHttps(int latency);
+    Mono<String> helloConnectionPoolHttp1(int latency);
+    Mono<String> helloConnectionPoolHttp2(int latency);
 }

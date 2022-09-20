@@ -7,11 +7,18 @@ import lombok.RequiredArgsConstructor;
 public class GetHelloUseCase {
     private final HelloRepository helloRepository;
 
-    public String hello(int latency) {
-        return helloRepository.hello(latency);
+    public String http(int latency) {
+        return helloRepository.http(latency);
+    }
+    public String https(int latency) {
+        return helloRepository.https(latency);
     }
 
-    public String helloConnectionPool(int latency) {
-        return helloRepository.helloConnectionPool(latency);
+    public String helloConnectionPoolHttp1(int latency) {
+        return helloRepository.helloConnectionPoolHttp1(latency);
+    }
+
+    public String helloConnectionPoolHttp2(int latency) {
+        return helloRepository.helloConnectionPoolHttp2(latency);
     }
 }

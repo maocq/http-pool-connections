@@ -14,7 +14,7 @@ spring:
       path: "/h2"
   profiles:
     include: null
-spring.datasource.url: "jdbc:postgresql://${DATABASE_IP:db}:5432/compose-postgres"
+spring.datasource.url: "jdbc:postgresql://${DATABASE_IP:localhost}:5432/compose-postgres"
 spring.datasource.username: "compose-postgres"
 spring.datasource.password: "compose-postgres"
 spring.jpa.properties.hibernate.dialect: "org.hibernate.dialect.PostgreSQLDialect"
@@ -23,5 +23,5 @@ spring.datasource.hikari.maximum-pool-size: 10
 
 adapter:
   restconsumer:
-    url: "http://${EXTERNAL_SERVICE_IP:node-latency}:8080"
+    url: "n4.apidevopsteam.xyz"
     pool: "${HTTP_POOL_SIZE:100}"

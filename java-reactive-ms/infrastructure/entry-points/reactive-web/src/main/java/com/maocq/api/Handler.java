@@ -19,14 +19,24 @@ public class Handler {
         return ServerResponse.ok().bodyValue("Hello");
     }
 
-    public Mono<ServerResponse> listenGETHello(ServerRequest serverRequest) {
+    public Mono<ServerResponse> listenGETHelloHttp(ServerRequest serverRequest) {
         var latency = serverRequest.queryParam("latency").map(Integer::valueOf).orElse(0);
-        return ServerResponse.ok().body(getHelloUseCase.hello(latency), String.class);
+        return ServerResponse.ok().body(getHelloUseCase.helloHttp(latency), String.class);
     }
 
-    public Mono<ServerResponse> listenGETHelloConnectionPool(ServerRequest serverRequest) {
+    public Mono<ServerResponse> listenGETHelloHttps(ServerRequest serverRequest) {
         var latency = serverRequest.queryParam("latency").map(Integer::valueOf).orElse(0);
-        return ServerResponse.ok().body(getHelloUseCase.helloConnectionPool(latency), String.class);
+        return ServerResponse.ok().body(getHelloUseCase.helloHttps(latency), String.class);
+    }
+
+    public Mono<ServerResponse> listenGETHelloConnectionPoolHttp1(ServerRequest serverRequest) {
+        var latency = serverRequest.queryParam("latency").map(Integer::valueOf).orElse(0);
+        return ServerResponse.ok().body(getHelloUseCase.helloConnectionPoolHttp1(latency), String.class);
+    }
+
+    public Mono<ServerResponse> listenGETHelloConnectionPoolHttp2(ServerRequest serverRequest) {
+        var latency = serverRequest.queryParam("latency").map(Integer::valueOf).orElse(0);
+        return ServerResponse.ok().body(getHelloUseCase.helloConnectionPoolHttp2(latency), String.class);
     }
 
     public Mono<ServerResponse> listenDB(ServerRequest serverRequest) {

@@ -15,8 +15,10 @@ public class RouterRest {
 public RouterFunction<ServerResponse> routerFunction(Handler handler) {
 
     return route(GET("/api/hello"), handler::listenHello)
-      .andRoute(GET("/api/get-hello"), handler::listenGETHello)
-      .andRoute(GET("/api/get-hello-pool"), handler::listenGETHelloConnectionPool)
+      .andRoute(GET("/api/http"), handler::listenGETHelloHttp)
+      .andRoute(GET("/api/https"), handler::listenGETHelloHttps)
+      .andRoute(GET("/api/pool-http1"), handler::listenGETHelloConnectionPoolHttp1)
+      .andRoute(GET("/api/pool-http2"), handler::listenGETHelloConnectionPoolHttp2)
       .andRoute(GET("/api/db"), handler::listenDB);
     }
 }

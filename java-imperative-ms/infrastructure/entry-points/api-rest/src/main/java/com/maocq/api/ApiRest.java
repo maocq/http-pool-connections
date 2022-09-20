@@ -25,16 +25,28 @@ public class ApiRest {
         return "Hello";
     }
 
-    @GetMapping(path = "/get-hello")
-    public String getHello(@RequestParam(required = false) Integer latency) {
+    @GetMapping(path = "/http")
+    public String getHelloHttp(@RequestParam(required = false) Integer latency) {
         var latencyValue = latency == null ? 0 : latency;
-        return helloUseCase.hello(latencyValue);
+        return helloUseCase.http(latencyValue);
     }
 
-    @GetMapping(path = "/get-hello-pool")
-    public String getHelloConnectionPool(@RequestParam(required = false) Integer latency) {
+    @GetMapping(path = "/https")
+    public String getHelloHttps(@RequestParam(required = false) Integer latency) {
         var latencyValue = latency == null ? 0 : latency;
-        return helloUseCase.helloConnectionPool(latencyValue);
+        return helloUseCase.https(latencyValue);
+    }
+
+    @GetMapping(path = "/pool-http1")
+    public String getHelloConnectionPoolHttp1(@RequestParam(required = false) Integer latency) {
+        var latencyValue = latency == null ? 0 : latency;
+        return helloUseCase.helloConnectionPoolHttp1(latencyValue);
+    }
+
+    @GetMapping(path = "/pool-http2")
+    public String getHelloConnectionPoolHttp2(@RequestParam(required = false) Integer latency) {
+        var latencyValue = latency == null ? 0 : latency;
+        return helloUseCase.helloConnectionPoolHttp2(latencyValue);
     }
 
     @GetMapping(path = "/db")

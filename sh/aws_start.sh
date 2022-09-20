@@ -28,10 +28,10 @@ fi
 
 
 db_ip=$(start "$case-db" "db" "$image_id" "$instance_type" "$user" "$key" "$key_name" "$security_group")
-node_ip=$(start "$case-node" "node" "$image_id" "$instance_type" "$user" "$key" "$key_name" "$security_group")
+#node_ip=$(start "$case-node" "node" "$image_id" "$instance_type" "$user" "$key" "$key_name" "$security_group")
 
 
-configuration=$(echo "printf 'DATABASE_IP="$db_ip"\nEXTERNAL_SERVICE_IP="$node_ip"\nHTTP_POOL_SIZE="$http_pool_size"\n' > /tmp/env.list")
+configuration=$(echo "printf 'DATABASE_IP="$db_ip"\nHTTP_POOL_SIZE="$http_pool_size"\n' > /tmp/env.list")
 ip=$(start "$case" "$case" "$image_id" "$instance_type" "$user" "$key" "$key_name" "$security_group" "$configuration")
 
 echo "http://$ip:8080/api/hello" > /dev/tty
